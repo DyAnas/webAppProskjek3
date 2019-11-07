@@ -1,0 +1,166 @@
+<div class="container">
+  <div *ngIf="VisType">
+
+
+    <div *ngIf="laster">
+      Laster kategori...
+    </div>
+    <div *ngFor="let type in alleTyper"></div>
+    <button (click)="visTypeView(type.TypeId)" type="button" class="btn btn-info">
+      {{type.type}}
+    </button>
+    <br />
+
+    <button class='btn btn-primary' (click)='registrerSp()'>Spør</button>
+  </div>
+
+    </div>
+ 
+
+
+
+<div class="container ">
+  <div *ngIf="VisBilSp">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5">
+        <h1>Billetter</h1>
+        <div *ngIf="laster">
+          Laster spørsmål...
+        </div>
+
+        <h1>Laster...</h1>
+        <div *ngFor="let sp in alleSpørsmål"></div>
+        <button (click)="visBilSpView(sp.Id)" type="button" class="btn btn-info">
+          {{etSp.spørmål}}
+        </button>
+
+
+        <span class=""> Rating</span> {{etSp.rating}}
+        <span class=""> Antall stemmer</span> {{etSp.stemmer}}
+      </div>
+    </div>
+    <div *ngIf="visSvar">
+      <h2>{{etSv.svar}}</h2>
+
+    </div>
+    <button class='btn btn-primary' (click)='registrerSp()'>Spør</button>
+  </div>
+</div>
+
+<div class="container ">
+  <div *ngIf="VisEnSp">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5">
+        <h1>Endring</h1>
+        <div *ngIf="laster">
+          Laster spørsmål...
+        </div>
+
+        <h1>Laster...</h1>
+        <div *ngFor="let sp in alleSpørsmål"></div>
+        <button (click)="visBilSpView(sp.Id)" type="button" class="btn btn-info">
+          {{etSp.spørmål}}
+        </button>
+
+        <span class=""> Rating</span> {{etSp.rating}}
+        <span class=""> Antall stemmer</span> {{etSp.stemmer}}
+      </div>
+
+      <div *ngIf="visSvar">
+        <h2>{{etSv.svar}}</h2>
+
+      </div>
+
+    </div>
+    <button class='btn btn-primary' (click)='registrerSp()'>Spør</button>
+  </div>
+
+</div>
+
+
+<div class="container ">
+  <div *ngIf="ViRuSp">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5">
+        <h1>Ruter</h1>
+        <div *ngIf="laster">
+          Laster spørsmål...
+        </div>
+
+        <h1>Laster...</h1>
+        <div *ngFor="let sp in alleSpørsmål"></div>
+        <button (click)="visBilSpView(sp.Id)" type="button" class="btn btn-info">
+          {{etSp.spørmål}}
+        </button>
+
+        <span class=""> Rating</span> {{etSp.rating}}
+        <span class=""> Antall stemmer</span> {{etSp.stemmer}}
+      </div>
+
+      <div *ngIf="visSvar">
+        <h2>{{etSv.svar}}</h2>
+
+      </div>
+
+    </div>
+    <button class='btn btn-primary' (click)='registrerSp()'>Spør</button>
+  </div>
+
+</div>
+
+// skjema
+
+
+
+
+<div class="col-sm-4 col-sm-offset-2" *ngIf="visSkjema">
+  <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+    <input class="form-control" formControlName="id" type="hidden" />
+    <div>
+      <select data-val="true" class="form-control" id="st"  style="font-family:'FontAwesome',sans-serif;height: 60px; width: 100%; border-bottom:3px solid black;">
+        <option value="fas fa-search" disabled selected>&nbsp;&nbsp;&#xf002;&nbsp;&nbsp;Hvor vil du reise fra</option>
+       
+        <option *ngFor="let type in alleTyper" formControlName="TypeId">&#xf238;&nbsp;&nbsp;&nbsp;&nbsp; </option>
+   
+      </select>
+    </div>
+
+    <div class="form-group">
+      <h3>Hva kan vi hjelpe deg med?</h3>
+      <input class="form-control" formControlName="spørmål" />
+      <p class="alert alert-warning" [hidden]="skjema.controls.fornavn.valid || (skjema.controls.fornavn.pristine && !submitted)">
+        Feltet må fylles ut
+      </p>
+    </div>
+
+
+
+    <div class="form-group">
+
+      <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-primary">Gå videre</button>
+      <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
